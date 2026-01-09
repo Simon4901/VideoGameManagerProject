@@ -1,5 +1,7 @@
-public class Games {
+import java.util.ArrayList;
 
+public class Games {
+    public static ArrayList<Games> gameList = new ArrayList<>();
 
     public String Name;
 
@@ -20,6 +22,11 @@ public class Games {
         this.Metascore = Metascore;
         this.Spieleranzahl = Spielerzahl;
         this.multiplayer = Multiplayer;
+    }
+    public static void initObjects(){
+        gameList.add(new Games("test", 18, "Genre", 10, 4, true));
+        gameList.add(new Games("Halo", 18, "Shooter", 8, 4, true));
+        gameList.add(new Games("Assasins Creed 2", 16, "Adventure", 10, 1, false));
     }
     @Override
     public String toString() {
