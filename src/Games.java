@@ -6,7 +6,7 @@ public class Games {
     public String Name;
 
     public int USK;
-//add comment 166666
+//add comment 1
     public String Genre;
 
     public double Metascore;
