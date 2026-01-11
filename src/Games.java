@@ -28,6 +28,9 @@ public class Games {
         gameList.add(new Games("Halo", 18, "Shooter", 8, 4, true));
         gameList.add(new Games("Assasins Creed 2", 16, "Adventure", 10, 1, false));
     }
+    public static void add (String eingabe){
+        gameList.add(new Games(eingabe, 18, eingabe, 10, 4, false));
+    }
     @Override
     public String toString() {
         return Name + USK + Genre + Metascore + Spieleranzahl + multiplayer;
