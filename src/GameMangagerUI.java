@@ -22,7 +22,7 @@ public  class GameMangagerUI extends JFrame{
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    Games.initObjects();                //initialising 3 Objects which gets saved to the list on the button press. Still need to figure out where to set it
+
                     StringBuilder sb = new StringBuilder();
                     String eingabe = textField1.getText();
                     Games.add(eingabe);
@@ -30,11 +30,13 @@ public  class GameMangagerUI extends JFrame{
                         sb.append(o).append("\n");
                     }
                     textArea1.setText(sb.toString());
+                    textField1.setText("");
             }
         });
     }
     //main to start the project and create the window. DO NOT TOUCH!!
     public static void main(String[] args) {
         GameMangagerUI gameMangagerUI = new GameMangagerUI();
+        Games.initObjects();                //initialising 3 Objects which gets saved to the list on the button press. Still need to figure out where to set it
     }
 }
