@@ -31,9 +31,11 @@ public class Games {
         gameList.add(new Games("Assasins Creed 2", 16, "Adventure", 10, 1, false));
     }
     //little Function to add something to the list, need more because it only fills the Name of the Game for now
-    public static void add (String eingabe){
-        gameList.add(new Games(eingabe, 18, eingabe, 10, 4, false));
+    public static void add (String eingabe, int Usk, String Genre, double Metascore, int Spielerzahl, boolean Multiplayer) {
+        gameList.add(new Games(eingabe, Usk, Genre, Metascore, Spielerzahl, Multiplayer));
     }
+    //little Function to get the right Usk input is missing
+
     //DO NOT TOUCH, i dont know if we need it but maybe we do. it makes the whole list to a single String
     @Override
     public String toString() {

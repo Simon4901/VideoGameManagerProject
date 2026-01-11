@@ -4,11 +4,13 @@ import java.awt.event.ActionListener;
 
 public  class GameMangagerUI extends JFrame{
     //UI Elements
-    private JPanel panel;
+
     private JButton button1;
     private JTextArea textArea1;
     private JTextField textField1;
     private JPanel mainPanel;
+    private JButton hinzufügenButton;
+    private JLabel Nachricht;
 
     //Function for the Window
     public GameMangagerUI() {
@@ -17,20 +19,26 @@ public  class GameMangagerUI extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setContentPane(mainPanel);
-        //button, which adds the input to the list but doesnt safe it for now!!
-        //and it prints out the list in the Text Area but there is nor right formation yet
+        //Now the function just prints out the list in TextArea1 without Formation, needs to be done!
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                     StringBuilder sb = new StringBuilder();
-                    String eingabe = textField1.getText();
-                    Games.add(eingabe);
                     for (Games o : Games.gameList){
                         sb.append(o).append("\n");
                     }
                     textArea1.setText(sb.toString());
-                    textField1.setText("");
+            }
+        }); //function for taking the inputs and saving them to list not complete! Needs Exception handling
+        hinzufügenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String eingabe = textField1.getText();
+                textField1.setText("");
+                Nachricht.setText("Gebe nun die USK ein!");
+
+
             }
         });
     }
