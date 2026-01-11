@@ -39,7 +39,7 @@ public class GameMangagerUI extends JFrame {
             }
         });
 
-        // input wizard step-by-step
+        // Button to add all elements to list step-by-step and exception handling
         hinzufügenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

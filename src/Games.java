@@ -34,7 +34,6 @@ public class Games {
     public static void add (String eingabe, int Usk, String Genre, double Metascore, int Spielerzahl, boolean Multiplayer) {
         gameList.add(new Games(eingabe, Usk, Genre, Metascore, Spielerzahl, Multiplayer));
     }
-    //little Function to get the right Usk input is missing
 
     //DO NOT TOUCH, i dont know if we need it but maybe we do. it makes the whole list to a single String
     @Override
