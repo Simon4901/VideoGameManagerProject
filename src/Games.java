@@ -15,8 +15,10 @@ public class Games {
     public int Spieleranzahl;
 
     public boolean multiplayer;
+
+    public int price;
 //Constructor
-    public Games(String Name, int USK, String Genre, double Metascore, int Spielerzahl, boolean Multiplayer) {
+    public Games(String Name, int USK, String Genre, double Metascore, int Spielerzahl, boolean Multiplayer) { //add price
         this.Name = Name;
         this.USK = USK;
         this.Genre = Genre;
@@ -25,13 +27,13 @@ public class Games {
         this.multiplayer = Multiplayer;
     }
     //Creates 3 Objects and ads them to the List
-    public static void initObjects(){
+    public static void initObjects(){//add price
         gameList.add(new Games("test", 18, "Genre", 10, 4, true));
         gameList.add(new Games("Halo", 18, "Shooter", 8, 4, true));
         gameList.add(new Games("Assasins Creed 2", 16, "Adventure", 10, 1, false));
     }
     //little Function to add something to the list, need more because it only fills the Name of the Game for now
-    public static void add (String eingabe, int Usk, String Genre, double Metascore, int Spielerzahl, boolean Multiplayer) {
+    public static void add (String eingabe, int Usk, String Genre, double Metascore, int Spielerzahl, boolean Multiplayer) {//add price
         gameList.add(new Games(eingabe, Usk, Genre, Metascore, Spielerzahl, Multiplayer));
     }
 
@@ -39,7 +41,7 @@ public class Games {
     @Override
     public String toString() {
         return Name + USK + Genre + Metascore + Spieleranzahl + multiplayer;
-    }
+    }//add price
 
 
 

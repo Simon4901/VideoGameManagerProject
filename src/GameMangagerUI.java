@@ -20,7 +20,7 @@ public class GameMangagerUI extends JFrame {
     private double tempMetascore;
     private int tempSpieleranzahl;
     private boolean tempMultiplayer;
-
+    //add price
     // Function for the Window and konstructor
     public GameMangagerUI() {
         setTitle("GameMangager");
@@ -147,6 +147,7 @@ public class GameMangagerUI extends JFrame {
                         Nachricht.setText("Name eingeben:");
                         textField1.setText("");
                     }
+                    //add price
 
                 } catch (IllegalArgumentException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(),
