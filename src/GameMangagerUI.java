@@ -21,7 +21,7 @@ public class GameMangagerUI extends JFrame {
     private int tempSpieleranzahl;
     private boolean tempMultiplayer;
 
-    // Function for the Window and konstruktor
+    // Function for the Window and konstructor
     public GameMangagerUI() {
         setTitle("GameMangager");
         setSize(1000, 500);
