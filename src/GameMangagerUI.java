@@ -10,6 +10,8 @@ public class GameMangagerUI extends JFrame {
     private JPanel mainPanel;
     private JButton hinzufügenButton;
     private JLabel Nachricht;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
     //For filling the list and Exceptionhandling
     private int step = 0;
     private String tempName;
@@ -22,7 +24,7 @@ public class GameMangagerUI extends JFrame {
     // Function for the Window
     public GameMangagerUI() {
         setTitle("GameMangager");
-        setSize(1500, 500);
+        setSize(1000, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(mainPanel);
         setVisible(true);
