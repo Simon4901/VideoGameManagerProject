@@ -41,4 +41,7 @@ public class Games {
         return Name + USK + Genre + Metascore + Spieleranzahl + multiplayer;
     }
 
+
+
+
 }
