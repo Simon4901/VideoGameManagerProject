@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Comparator;
 
 public class GameMangagerUI extends JFrame {
     // UI Elements
@@ -31,11 +32,65 @@ public class GameMangagerUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(mainPanel);
         setVisible(true);
-
+        comboBox1.addItem("A - Z");
         // prints out the list in TextArea1
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String Kategorie = comboBox2.getSelectedItem().toString();
+                String Filter = comboBox1.getSelectedItem().toString();
+                if (Kategorie.equals("Name")) {
+                    if (Filter.equals("A - Z")) {
+                        Games.gameList.sort(Comparator.comparing(g -> g.Name));
+                    }
+                    else if (Filter.equals("Z - A")) {
+                        Games.gameList.sort(Comparator.comparing((Games g)-> g.Name).reversed());
+                    }
+                }
+                else  if (Kategorie.equals("Genre")) {
+                    if (Filter.equals("A - Z")) {
+                        Games.gameList.sort(Comparator.comparing((Games g)-> g.Genre));
+                    }
+                    else if (Filter.equals("Z - A")) {
+                        Games.gameList.sort(Comparator.comparing((Games g)-> g.Genre).reversed());
+                    }
+                }
+                else if  (Kategorie.equals("Spieleranzahl")) {
+                    if (Filter.equals("High-to-Low")) {
+                        Games.gameList.sort(Comparator.comparingInt( g -> g.Spieleranzahl));
+                    }
+                    else if (Filter.equals("Low-to-High")) {
+                        Games.gameList.sort(Comparator.comparingInt((Games g)-> g.Spieleranzahl).reversed());
+                    }
+                }
+                else if (Kategorie.equals("Multiplayer")) {
+                    return;
+                }
+                else if (Kategorie.equals("Preis")) {
+                    if (Filter.equals("High-to-Low")) {
+                        Games.gameList.sort(Comparator.comparingInt( g -> g.Preis));
+                    }
+                    else if (Filter.equals("Low-to-High")) {
+                        Games.gameList.sort(Comparator.comparingInt((Games g)-> g.Preis).reversed());
+                    }
+                }
+                else if (Kategorie.equals("USK")){
+                    if (Filter.equals("High-to-Low")) {
+                        Games.gameList.sort(Comparator.comparingInt((Games g)-> g.USK));
+                    }
+                    else if (Filter.equals("Low-to-High")) {
+                        Games.gameList.sort(Comparator.comparingInt((Games g)-> g.USK).reversed());
+                    }
+                }
+                else if (Kategorie.equals("Metascore")) {
+                    if (Filter.equals("High-to-Low")) {
+                        Games.gameList.sort(Comparator.comparingDouble(g -> g.Metascore));
+                    }
+                    else if (Filter.equals("Low-to-High")) {
+                        Games.gameList.sort(Comparator.comparingDouble((Games g)-> g.Metascore).reversed());
+                    }
+                }
+
                 StringBuilder sb = new StringBuilder();
                 for (Games o : Games.gameList) {
                     sb.append(o).append("\n");
@@ -171,6 +226,7 @@ public class GameMangagerUI extends JFrame {
                         step = 0;
                         Nachricht.setText("Name eingeben:");
                         textField1.setText("");
+                        textField1.setText("");
                     }
 
 
@@ -181,6 +237,30 @@ public class GameMangagerUI extends JFrame {
             }
         });
 
+        comboBox2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String auswahl = (String) comboBox2.getSelectedItem();
+                comboBox1.removeAllItems();
+                comboBox1.setEnabled(true);
+                if ("Name".equals(auswahl) || "Genre".equals(auswahl)) {
+                    comboBox1.addItem("A - Z");
+                    comboBox1.addItem("Z - A");
+                }
+                else if ("USK".equals(auswahl) || "Metascore".equals(auswahl) || "Preis".equals(auswahl) || "Spieleranzahl".equals(auswahl)) {
+                    comboBox1.addItem("High-to-Low");
+                    comboBox1.addItem("Low-to-High");
+                }
+                else if ("Multiplayer".equals(auswahl)) {
+                    comboBox1.addItem("Ja");
+                    comboBox1.addItem("Nein");
+                }
+                else {
+                    comboBox1.setEnabled(false);
+                }
+
+            }
+        });
     } // <-- Konstruktor endet hier
 
     // main to start the project
