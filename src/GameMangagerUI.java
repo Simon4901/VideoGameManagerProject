@@ -12,6 +12,8 @@ public class GameMangagerUI extends JFrame {
     private JLabel Nachricht;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
+
+
     //For filling the list and Exceptionhandling
     private int step = 0;
     private String tempName;
@@ -20,7 +22,8 @@ public class GameMangagerUI extends JFrame {
     private double tempMetascore;
     private int tempSpieleranzahl;
     private boolean tempMultiplayer;
-    //add price
+    private int tempPreis;
+
     // Function for the Window and konstructor
     public GameMangagerUI() {
         setTitle("GameMangager");
@@ -139,22 +142,45 @@ public class GameMangagerUI extends JFrame {
                             throw new IllegalArgumentException("Bitte 'ja' oder 'nein' eingeben.");
                         }
 
+                        Nachricht.setText("Preis eingeben:");
+                        step = 6;
+                        textField1.setText("");
+                        return;
+
+
+                    }
+                    // Preis
+                    if (step == 6) {
+                        try {
+                            tempPreis = Integer.parseInt(input);
+
+                            if (tempPreis < 0) {
+                                throw new IllegalArgumentException("Preis darf nicht negativ sein.");
+                            }
+
+                        } catch (NumberFormatException ex) {
+                            throw new IllegalArgumentException("Preis muss eine ganze Zahl sein.");
+                        }
+
+
                         // Saving
-                        Games.add(tempName, tempUSK, tempGenre, tempMetascore, tempSpieleranzahl, tempMultiplayer);
+                        Games.add(tempName, tempUSK, tempGenre, tempMetascore, tempSpieleranzahl, tempMultiplayer, tempPreis);
+
 
                         // Reset für nächstes Spiel
                         step = 0;
                         Nachricht.setText("Name eingeben:");
                         textField1.setText("");
                     }
-                    //add price
 
-                } catch (IllegalArgumentException ex) {
+
+                    } catch (IllegalArgumentException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(),
                             "Ungültige Eingabe", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
+
     } // <-- Konstruktor endet hier
 
     // main to start the project
