@@ -13,7 +13,7 @@ public class GamesTest {
         Games.gameList.add(new Games("Game B", 18, "RPG", 90, 1, true, 10));
         Games.gameList.add(new Games("Game C", 6, "Puzzle", 70, 2, false, 20));
 
-        // Act
+        // Act (sort Low -> High)
         Games.gameList.sort((g1, g2) -> Integer.compare(g1.Preis, g2.Preis));
 
         // Assert
