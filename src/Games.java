@@ -25,7 +25,7 @@ public class Games {
         this.Metascore = Metascore;
         this.Spieleranzahl = Spielerzahl;
         this.multiplayer = Multiplayer;
-        this.Preis= Preis;
+        this.Preis = Preis;
     }
     //Creates 3 Objects and ads them to the List
     public static void initObjects(){
@@ -41,7 +41,7 @@ public class Games {
     //DO NOT TOUCH, i dont know if we need it but maybe we do. it makes the whole list to a single String
     @Override
     public String toString() {
-        return Name + USK + Genre + Metascore + Spieleranzahl + multiplayer + Preis;
+        return String.format("%-20s %-5d %-12s %-6.1f %-9d %-4s %-5d", Name, USK, Genre, Metascore, Spieleranzahl, multiplayer, Preis);
     }
 
 

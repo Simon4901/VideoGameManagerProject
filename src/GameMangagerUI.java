@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Comparator;
@@ -25,14 +26,17 @@ public class GameMangagerUI extends JFrame {
     private boolean tempMultiplayer;
     private int tempPreis;
 
-    // Function for the Window and konstructor
+    // Function for the Window and constructor
     public GameMangagerUI() {
         setTitle("GameMangager");
         setSize(1000, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(mainPanel);
+        setResizable(false);
         setVisible(true);
         comboBox1.addItem("A - Z");
+        textArea1.setFont(new Font("Monospaced", Font.PLAIN, 12));
+
         // prints out the list in TextArea1
         button1.addActionListener(new ActionListener() {
             @Override
@@ -41,7 +45,7 @@ public class GameMangagerUI extends JFrame {
                 String Filter = comboBox1.getSelectedItem().toString();
                 if (Kategorie.equals("Name")) {
                     if (Filter.equals("A - Z")) {
-                        Games.gameList.sort(Comparator.comparing(g -> g.Name));
+                        Games.gameList.sort(Comparator.comparing((Games g) -> g.Name));
                     }
                     else if (Filter.equals("Z - A")) {
                         Games.gameList.sort(Comparator.comparing((Games g)-> g.Name).reversed());
@@ -76,7 +80,7 @@ public class GameMangagerUI extends JFrame {
                 }
                 else if (Kategorie.equals("USK")){
                     if (Filter.equals("High-to-Low")) {
-                        Games.gameList.sort(Comparator.comparingInt((Games g)-> g.USK));
+                        Games.gameList.sort(Comparator.comparingInt(g-> g.USK));
                     }
                     else if (Filter.equals("Low-to-High")) {
                         Games.gameList.sort(Comparator.comparingInt((Games g)-> g.USK).reversed());
@@ -87,7 +91,7 @@ public class GameMangagerUI extends JFrame {
                         Games.gameList.sort(Comparator.comparingDouble(g -> g.Metascore));
                     }
                     else if (Filter.equals("Low-to-High")) {
-                        Games.gameList.sort(Comparator.comparingDouble((Games g)-> g.Metascore).reversed());
+                        Games.gameList.sort(Comparator.comparingDouble((Games g) -> g.Metascore).reversed());
                     }
                 }
 
