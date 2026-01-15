@@ -92,6 +92,14 @@ public class GameMangagerUI extends JFrame {
                 }
 
                 StringBuilder sb = new StringBuilder();
+                sb.append(String.format(
+                        "%-20s %-5s %-12s %-10s %-10s %-12s%n",
+                        "Name", "USK", "Genre", "Metascore", "Spieleranzahl", "Preis"
+                ));
+
+                sb.append("--------------------------------------------------------------------------\n");
+
+
                 for (Games o : Games.gameList) {
                     sb.append(o).append("\n");
                 }

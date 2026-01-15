@@ -38,7 +38,7 @@ public class Games {
     //DO NOT TOUCH, i dont know if we need it but maybe we do. it makes the whole list to a single String
     @Override
     public String toString() {
-        return String.format("%-20s %-5d %-12s %-6d %-9d %-5.2f €", Name, USK, Genre, Metascore, Spieleranzahl, Preis);
+        return String.format("%-20s %-5d %-12s %-10d %-10d %-5.2f €", Name, USK, Genre, Metascore, Spieleranzahl, Preis);
     }
 
 
