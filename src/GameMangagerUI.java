@@ -21,10 +21,9 @@ public class GameMangagerUI extends JFrame {
     private String tempName;
     private int tempUSK;
     private String tempGenre;
-    private double tempMetascore;
+    private int tempMetascore;
     private int tempSpieleranzahl;
-    private boolean tempMultiplayer;
-    private int tempPreis;
+    private double tempPreis;
 
     // Function for the Window and constructor
     public GameMangagerUI() {
@@ -67,15 +66,12 @@ public class GameMangagerUI extends JFrame {
                         Games.gameList.sort(Comparator.comparingInt((Games g)-> g.Spieleranzahl).reversed());
                     }
                 }
-                else if (Kategorie.equals("Multiplayer")) {
-                    return;
-                }
                 else if (Kategorie.equals("Preis")) {
                     if (Filter.equals("High-to-Low")) {
-                        Games.gameList.sort(Comparator.comparingInt( g -> g.Preis));
+                        Games.gameList.sort(Comparator.comparingDouble( g -> g.Preis));
                     }
                     else if (Filter.equals("Low-to-High")) {
-                        Games.gameList.sort(Comparator.comparingInt((Games g)-> g.Preis).reversed());
+                        Games.gameList.sort(Comparator.comparingDouble((Games g)-> g.Preis).reversed());
                     }
                 }
                 else if (Kategorie.equals("USK")){
@@ -88,10 +84,10 @@ public class GameMangagerUI extends JFrame {
                 }
                 else if (Kategorie.equals("Metascore")) {
                     if (Filter.equals("High-to-Low")) {
-                        Games.gameList.sort(Comparator.comparingDouble(g -> g.Metascore));
+                        Games.gameList.sort(Comparator.comparingInt(g -> g.Metascore));
                     }
                     else if (Filter.equals("Low-to-High")) {
-                        Games.gameList.sort(Comparator.comparingDouble((Games g) -> g.Metascore).reversed());
+                        Games.gameList.sort(Comparator.comparingInt((Games g) -> g.Metascore).reversed());
                     }
                 }
 
@@ -155,9 +151,9 @@ public class GameMangagerUI extends JFrame {
 
                     // Metascore
                     if (step == 3) {
-                        double value;
+                        int value;
                         try {
-                            value = Double.parseDouble(input);
+                            value = Integer.parseInt(input);
                         } catch (NumberFormatException ex) {
                             throw new IllegalArgumentException("Metascore muss eine Zahl sein.");
                         }
@@ -185,33 +181,15 @@ public class GameMangagerUI extends JFrame {
                             throw new IllegalArgumentException("Spieleranzahl muss mindestens 1 sein.");
 
                         tempSpieleranzahl = value;
-                        Nachricht.setText("Multiplayer? (ja / nein):");
+                        Nachricht.setText("Preis eingeben:");
                         step = 5;
                         textField1.setText("");
                         return;
                     }
-
-                    // Multiplayer
-                    if (step == 5) {
-                        if (input.equalsIgnoreCase("ja")) {
-                            tempMultiplayer = true;
-                        } else if (input.equalsIgnoreCase("nein")) {
-                            tempMultiplayer = false;
-                        } else {
-                            throw new IllegalArgumentException("Bitte 'ja' oder 'nein' eingeben.");
-                        }
-
-                        Nachricht.setText("Preis eingeben:");
-                        step = 6;
-                        textField1.setText("");
-                        return;
-
-
-                    }
                     // Preis
-                    if (step == 6) {
+                    if (step == 5) {
                         try {
-                            tempPreis = Integer.parseInt(input);
+                            tempPreis = Double.parseDouble(input);
 
                             if (tempPreis < 0) {
                                 throw new IllegalArgumentException("Preis darf nicht negativ sein.");
@@ -223,7 +201,7 @@ public class GameMangagerUI extends JFrame {
 
 
                         // Saving
-                        Games.add(tempName, tempUSK, tempGenre, tempMetascore, tempSpieleranzahl, tempMultiplayer, tempPreis);
+                        Games.add(tempName, tempUSK, tempGenre, tempMetascore, tempSpieleranzahl, tempPreis);
 
 
                         // Reset für nächstes Spiel
@@ -254,10 +232,6 @@ public class GameMangagerUI extends JFrame {
                 else if ("USK".equals(auswahl) || "Metascore".equals(auswahl) || "Preis".equals(auswahl) || "Spieleranzahl".equals(auswahl)) {
                     comboBox1.addItem("High-to-Low");
                     comboBox1.addItem("Low-to-High");
-                }
-                else if ("Multiplayer".equals(auswahl)) {
-                    comboBox1.addItem("Ja");
-                    comboBox1.addItem("Nein");
                 }
                 else {
                     comboBox1.setEnabled(false);
