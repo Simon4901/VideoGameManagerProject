@@ -35,6 +35,7 @@ public class GameMangagerUI extends JFrame {
         setVisible(true);
         comboBox1.addItem("A - Z");
         textArea1.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        Games.initObjects();
 
         // prints out the list in TextArea1
         button1.addActionListener(new ActionListener() {
@@ -104,7 +105,7 @@ public class GameMangagerUI extends JFrame {
                     sb.append(o).append("\n");
                 }
 
-                sb.append("Summe :                                                       " + Games.berechneSumme() + "€");
+                sb.append("---------------------------------------------------------------------------\nSumme :                                                       " + Games.berechneSumme() + "€");
                 textArea1.setText(sb.toString());
 
             }
@@ -152,7 +153,6 @@ public class GameMangagerUI extends JFrame {
                     if (step == 2) {
                         if (input.isEmpty())
                             throw new IllegalArgumentException("Genre darf nicht leer sein.");
-
                         tempGenre = input;
                         Nachricht.setText("Metascore eingeben (0 - 100):");
                         step = 3;
@@ -255,6 +255,5 @@ public class GameMangagerUI extends JFrame {
     // main to start the project
     public static void main(String[] args) {
         GameMangagerUI gameMangagerUI = new GameMangagerUI();
-        Games.initObjects();
     }
 }

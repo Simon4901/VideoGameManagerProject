@@ -50,8 +50,4 @@ public class Games {
     public String toString() {
         return String.format("%-20s %-5d %-12s %-10d %-10d %-5.2f €", Name, USK, Genre, Metascore, Spieleranzahl, Preis);
     }
-
-
-
-
 }
