@@ -30,7 +30,7 @@ The application separates data logic from user interface logic:
 - GameManagerUI
   - Handles the graphical user interface
   - Contains buttons, text fields, combo boxes, and a text area
-  - Uses the `Games` class to manage and display data
+  - Uses the Games class to manage and display data
 
 - JFrame
-  - The UI class extends `JFrame` to create the application window
+  - The UI class extends JFrame to create the application window
