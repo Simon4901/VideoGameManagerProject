@@ -26,14 +26,24 @@ public class Games {
     }
     //Creates 3 Objects and ads them to the List
     public static void initObjects(){
-        gameList.add(new Games("test", 18, "Genre", 10, 4, 10.99));
-        gameList.add(new Games("Halo", 18, "Shooter", 8, 4, 9.99 ));
-        gameList.add(new Games("Assasins Creed 2", 16, "Adventure", 10, 1, 12.99));
+        gameList.add(new Games("Heavy Rain", 16, "Thriller", 88, 1, 10.99));
+        gameList.add(new Games("Halo", 18, "Shooter", 78, 4, 9.99 ));
+        gameList.add(new Games("Assasins Creed 2", 16, "Adventure", 91, 1, 12.99));
     }
     //little Function to add something to the list, need more because it only fills the Name of the Game for now
     public static void add (String eingabe, int Usk, String Genre, int Metascore, int Spielerzahl, double Preis) {//add price
         gameList.add(new Games(eingabe, Usk, Genre, Metascore, Spielerzahl, Preis));
     }
+
+    //Funktion zur berechnung vom preis
+    public static double berechneSumme(){
+        double summe = 0;
+        for (Games s : gameList){
+            summe += s.Preis;
+        }
+        return summe;
+    }
+
 
     //DO NOT TOUCH, i dont know if we need it but maybe we do. it makes the whole list to a single String
     @Override

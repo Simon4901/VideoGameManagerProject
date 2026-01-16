@@ -28,7 +28,7 @@ public class GameMangagerUI extends JFrame {
     // Function for the Window and constructor
     public GameMangagerUI() {
         setTitle("GameMangager");
-        setSize(1000, 500);
+        setSize(1000, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(mainPanel);
         setResizable(false);
@@ -103,7 +103,10 @@ public class GameMangagerUI extends JFrame {
                 for (Games o : Games.gameList) {
                     sb.append(o).append("\n");
                 }
+
+                sb.append("Summe :                                                       " + Games.berechneSumme() + "€");
                 textArea1.setText(sb.toString());
+
             }
         });
 

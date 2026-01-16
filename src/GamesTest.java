@@ -9,6 +9,8 @@ public class GamesTest {
     }
 
 
-
-
+    @Test
+    void berechneSumme() {
+        assertEquals(33.97, Games.berechneSumme());
+    }
 }
