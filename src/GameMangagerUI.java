@@ -25,7 +25,7 @@ public class GameMangagerUI extends JFrame {
     private int tempSpieleranzahl;
     private double tempPreis;
 
-    // Function for the Window and constructor
+    //for defining the Window and constructor
     public GameMangagerUI() {
         setTitle("GameMangager");
         setSize(1000, 600);
@@ -35,9 +35,9 @@ public class GameMangagerUI extends JFrame {
         setVisible(true);
         comboBox1.addItem("A - Z");
         textArea1.setFont(new Font("Monospaced", Font.PLAIN, 12));
-        Games.initObjects();
 
-        // prints out the list in TextArea1
+
+        // prints out the list in TextArea1 and rearranging the list depending on the Checkboxes with an comparator
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -91,7 +91,7 @@ public class GameMangagerUI extends JFrame {
                         Games.gameList.sort(Comparator.comparingInt((Games g) -> g.Metascore).reversed());
                     }
                 }
-
+                //Stringbuilder to display in TextArea1
                 StringBuilder sb = new StringBuilder();
                 sb.append(String.format(
                         "%-20s %-5s %-12s %-10s %-10s %-12s%n",
@@ -197,7 +197,7 @@ public class GameMangagerUI extends JFrame {
                         textField1.setText("");
                         return;
                     }
-                    // Preis
+                    // Price
                     if (step == 5) {
                         try {
                             tempPreis = Double.parseDouble(input);
@@ -215,7 +215,7 @@ public class GameMangagerUI extends JFrame {
                         Games.add(tempName, tempUSK, tempGenre, tempMetascore, tempSpieleranzahl, tempPreis);
 
 
-                        // Reset für nächstes Spiel
+                        // Reset for the next Game
                         step = 0;
                         Nachricht.setText("Name eingeben:");
                         textField1.setText("");
@@ -229,7 +229,7 @@ public class GameMangagerUI extends JFrame {
                 }
             }
         });
-
+        //fills comboBox1 depending on comboBox2
         comboBox2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -250,10 +250,11 @@ public class GameMangagerUI extends JFrame {
 
             }
         });
-    } // <-- Konstruktor endet hier
+    }
 
     // main to start the project
     public static void main(String[] args) {
         GameMangagerUI gameMangagerUI = new GameMangagerUI();
+        Games.initObjects();
     }
 }
